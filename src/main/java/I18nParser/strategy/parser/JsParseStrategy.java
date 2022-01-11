@@ -51,7 +51,6 @@ public class JsParseStrategy implements ParseStrategy{
                 new FileReader(targetFilePath)
         )) {
             String str;
-            Set strSet = new HashSet();
             while ((str = reader.readLine()) != null) {
                 if(str != null && str.trim().length() > 0 && !str.startsWith("//")) {
                     try {
@@ -71,14 +70,6 @@ public class JsParseStrategy implements ParseStrategy{
                     }
                 }
             }
-
-            List strList = new ArrayList(strSet);
-
-            Collections.sort(strList);
-
-            strList.forEach(setStr -> {
-                System.out.println(setStr);
-            });
         } catch (Exception e) {
             System.out.println("JsParseStrategy getProperties error");
             e.printStackTrace();

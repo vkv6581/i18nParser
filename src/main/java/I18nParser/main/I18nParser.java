@@ -1,5 +1,6 @@
 package I18nParser.main;
 
+import I18nParser.strategy.filter.AllFilterStrategy;
 import I18nParser.strategy.filter.FilterStrategy;
 import I18nParser.strategy.filter.NoTranslationFilterStrategy;
 import I18nParser.strategy.finder.DefaultFindStrategy;
@@ -28,7 +29,6 @@ public class I18nParser {
         }
 
         i18nFileVoList = filterTargetFileVoList(i18nFileVoList);
-        System.out.println(i18nFileVoList);
 
         excelExport(i18nFileVoList);
     }
@@ -63,7 +63,7 @@ public class I18nParser {
     }
 
     private List<I18nFileVo> filterTargetFileVoList(List<I18nFileVo> fileVoList) {
-        FilterStrategy strategy = new NoTranslationFilterStrategy();
+        FilterStrategy strategy = new AllFilterStrategy();
         I18nFilter filter = new I18nFilter(strategy, fileVoList);
         return filter.filter();
     }
